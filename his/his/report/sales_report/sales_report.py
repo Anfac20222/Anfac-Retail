@@ -36,7 +36,7 @@ def get_data(filters):
 					{
 						"type" : "Sales",
 						"date" : data.posting_date,
-						"customer" : data.against,
+						"customer" : frappe.db.get_value("Customer" , data.against, "customer_name"),
 						
 						"debit" : data.debit or '',
 						
