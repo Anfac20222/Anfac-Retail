@@ -36,15 +36,15 @@ def get_data(filters):
 					{
 						"type" : "Sales",
 						"date" : data.posting_date,
-						"customer" : data.against,
+						"customer" :  frappe.db.get_value("Customer" , data.against, "customer_name"),
 						
 						"debit" : data.debit or '',
 						
 					}
 			)
 		else:
-			if data.account.replace("'","") != 'Total':
-				incash.append({
+			# if data.account.replace("'","") != 'Total':
+			incash.append({
 							"type" : data.account.replace("'",""),
 							"date" : data.posting_date,
 							
