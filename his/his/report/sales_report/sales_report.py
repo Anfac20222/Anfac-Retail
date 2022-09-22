@@ -36,7 +36,11 @@ def get_data(filters):
 					{
 						"type" : "Sales",
 						"date" : data.posting_date,
+<<<<<<< HEAD
 						"customer" :  frappe.db.get_value("Customer" , data.against, "customer_name"),
+=======
+						"customer" : frappe.db.get_value("Customer" , data.against, "customer_name"),
+>>>>>>> 3e76becd76896a0356393042f374b76486312c3b
 						
 						"debit" : data.debit or '',
 						
