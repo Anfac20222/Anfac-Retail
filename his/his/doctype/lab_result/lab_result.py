@@ -8,7 +8,49 @@ from frappe.model.document import Document
 from frappe.utils import get_link_to_form, getdate
 
 class LabResult(Document):
-	pass
+
+	def get_lab_tests(self):
+		test ={}
+		for item in self.normal_test_items:
+			
+			# frappe.errprint(test)
+			is_template = 0
+			template = {}
+			if item.test:
+				is_template = frappe.db.exists("Lab Test Template", item.test)
+				if is_template:
+					template = frappe.get_doc('Lab Test Template', item.test)
+			else:
+				is_template = frappe.db.exists("Lab Test Template", item.lab_test_name)
+				if is_template:
+					template = frappe.get_doc('Lab Test Template', item.lab_test_name)
+			if template:
+				if template.department:
+					# template = frappe.get_doc('Lab Test Template', item.test)
+					# frappe.msgprint(template.name)
+					if not f'{template.department}' in test:
+						test[f'{template.department}'] = [{'test':item.test , 'lab_test_name' : item.lab_test_name , 'result_value' : item.result_value , 'normal_range' :item.normal_range}]
+
+						if template.lab_test_template_type == "Compound":
+							events = frappe.db.get_list('Normal Test Result',
+								filters={
+									'template': template.name,
+									'parent' : self.name
+								},
+								fields=['lab_test_name', 'result_value' , 'normal_range'],
+							
+							)
+							# frappe.errprint(events)	
+							# lab_test_events= frappe.db.get_all("Normal Test Result", filters, or_filters, fields, order_by, group_by, start, page_length)
+							for event in events:
+								test[f'{template.department}'].append({ 'lab_test_name' : event.lab_test_name ,  'normal_range' :event.normal_range , 'result_value' : event.result_value})
+
+					
+					else:
+						test[f'{template.department}'].append({'test':item.lab_test_name , 'lab_test_name' : '' , 'result_value' : item.result_value , 'normal_range' :item.normal_range})
+				
+		# frappe.errprint(test)					
+		return test
 
 	# def after_insert(self):
 	# 	if self.prescription:
