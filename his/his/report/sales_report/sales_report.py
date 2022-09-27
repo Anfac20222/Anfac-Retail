@@ -19,7 +19,7 @@ def get_data(filters):
 	report_gl_filters = {
 		
 		"company": company,
-		"account" : filters.account,
+		"account" : [filters.account],
 
 		"from_date": _from,
 		"to_date": to,
@@ -321,13 +321,13 @@ def get_columns():
 		},
 
 
-		# {
-		# 	"label": _("Voucher"),
-		# 	"fieldtype": "Data",
-		# 	"fieldname": "voucher",
+		{
+			"label": _("Voucher"),
+			"fieldtype": "Data",
+			"fieldname": "voucher",
 			
-		# 	"width": 300,
-		# },
+			"width": 300,
+		},
 	
 		
 		
@@ -350,20 +350,20 @@ def get_columns():
 		
 		
 			{
-			"label": _("Amount"),
+			"label": _("Debit"),
 			"fieldtype": "Currency",
 			"fieldname": "debit",
 			
 			"width": 100,
 		},
 
-		# {
-		# 	"label": _("Credit"),
-		# 	"fieldtype": "Currency",
-		# 	"fieldname": "credit",
+		{
+			"label": _("Credit"),
+			"fieldtype": "Currency",
+			"fieldname": "credit",
 			
-		# 	"width": 100,
-		# },
+			"width": 100,
+		},
 			
 	]
 

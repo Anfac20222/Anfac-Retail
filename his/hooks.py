@@ -99,6 +99,9 @@ doc_events = {
 	"Sales Invoice": {
 		"on_submit": "his.api.create_lab_test.create_lab_tests",
 		
+	},
+	"Patient Encounter" :{
+		"before_save":"his.api.create_order.create_order"
 	}
 }
 
