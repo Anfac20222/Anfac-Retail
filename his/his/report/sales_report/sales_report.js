@@ -2,7 +2,13 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
+frappe.db.get_value('Defaults', {user: frappe.session.user , document : "Account"}, 'value')
+			.then(r => {
+				 
+			
 frappe.query_reports["Sales Report"] = {
+	
+	
 	"filters": [
 		{
 			fieldname: "from_date",
@@ -21,20 +27,12 @@ frappe.query_reports["Sales Report"] = {
 		{
 			"fieldname":"account",
 			"label": __("Account"),
-			"fieldtype": "MultiSelectList",
+			"fieldtype": "Link",
 			"options": "Account",
-			"default" : ["1110 - Cash - AT"],
-			get_data: function(txt) {
-				return frappe.db.get_link_options('Account', txt, {
-					company: frappe.defaults.get_global_default("company"),
-					is_group : 0,
-					
-
-				});
-			}
+			"default" :r.message.value
 		},
 		
 
 	]
 };
-
+})
