@@ -52,19 +52,19 @@ def create_lab_tests(doc , method = None):
 						"template": template.name
 					})
 	   
-
-	lab_test = frappe.get_doc({
-		'doctype': 'Lab Result',
-		'patient' : doc.patient,
-		'practitioner' : doc.ref_practitioner,
-		"invoice_no" : doc.name,
-		'normal_test_items' : lab_test_itmes
+	if lab_test_itmes :
+		lab_test = frappe.get_doc({
+			'doctype': 'Lab Result',
+			'patient' : doc.patient,
+			'practitioner' : doc.ref_practitioner,
+			"invoice_no" : doc.name,
+			'normal_test_items' : lab_test_itmes
+			
+			})
 		
-		})
-	
-	# for item in doc.items:
-	#     create_lab_tests(item.item_code)
-	lab_test.insert()
+		# for item in doc.items:
+		#     create_lab_tests(item.item_code)
+		lab_test.insert()
  
 
 
