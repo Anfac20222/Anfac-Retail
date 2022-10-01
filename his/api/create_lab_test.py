@@ -13,6 +13,7 @@ def create_lab_tests(doc , method = None):
 			if template.lab_test_template_type == "Single":
 				lab_test_itmes.append(
 						{
+							"test" : template.lab_test_name,
 							"lab_test_name": template.lab_test_name,
 							"lab_test_uom": template.lab_test_uom,
 							"secondary_uom": template.secondary_uom,
@@ -51,6 +52,46 @@ def create_lab_tests(doc , method = None):
 						"allow_blank": normal_test_template.allow_blank,
 						"template": template.name
 					})
+			elif template.lab_test_template_type == "Grouped":
+				lab_test_itmes.append({
+
+					
+						
+						"test" : template.name
+
+				})
+			
+				
+
+				for normal_test_template in template.lab_test_groups:
+					# normal = {}
+					# if is_group:
+					# 	normal.lab_test_event = normal_test_template.lab_test_event
+					# else:
+					lab_test_itmes.append({
+
+					
+						
+						"lab_test_name" : normal_test_template.lab_test_template,
+						"template": template.name
+
+						})
+					group_test = frappe.get_doc("Lab Test Template" , normal_test_template.lab_test_template)
+					for test in group_test.normal_test_templates:
+						lab_test_itmes.append({
+
+						
+							"lab_test_event": test.lab_test_event,
+							
+							"result_value" : "nill",
+							"lab_test_uom": test.lab_test_uom,
+							"secondary_uom": test.secondary_uom,
+							"conversion_factor": test.conversion_factor,
+							"normal_range": test.normal_range,
+							"require_result_value": 1,
+							"allow_blank": test.allow_blank,
+							"template": normal_test_template.lab_test_template
+						})
 	   
 	if lab_test_itmes :
 		lab_test = frappe.get_doc({

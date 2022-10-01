@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "Ord.#####",
  "creation": "2022-09-27 13:19:51.595760",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -22,6 +23,8 @@
   {
    "fieldname": "patient",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Patient",
    "options": "Patient"
   },
@@ -39,12 +42,14 @@
   },
   {
    "fieldname": "col1_column",
-   "fieldtype": "Column Break",
-   "label": "col1"
+   "fieldtype": "Column Break"
   },
   {
+   "bold": 1,
    "fieldname": "doctor",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Doctor",
    "options": "Healthcare Practitioner"
   },
@@ -55,8 +60,13 @@
    "options": "Medical Department"
   },
   {
+   "bold": 1,
+   "default": "Today",
    "fieldname": "date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Date"
   },
   {
@@ -72,6 +82,8 @@
   {
    "fieldname": "grand_total",
    "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Grand Total",
    "read_only": 1
   },
@@ -84,7 +96,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-27 13:45:22.398657",
+ "modified": "2022-09-30 18:16:24.535819",
  "modified_by": "Administrator",
  "module": "His",
  "name": "Order",

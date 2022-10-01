@@ -20,16 +20,16 @@ class LabResult(Document):
 				is_template = frappe.db.exists("Lab Test Template", item.test)
 				if is_template:
 					template = frappe.get_doc('Lab Test Template', item.test)
-			else:
-				is_template = frappe.db.exists("Lab Test Template", item.lab_test_name)
-				if is_template:
-					template = frappe.get_doc('Lab Test Template', item.lab_test_name)
+			# else:
+			# 	is_template = frappe.db.exists("Lab Test Template", item.lab_test_name)
+			# 	if is_template:
+			# 		template = frappe.get_doc('Lab Test Template', item.lab_test_name)
 			if template:
 				if template.department:
 					# template = frappe.get_doc('Lab Test Template', item.test)
 					# frappe.msgprint(template.name)
 					if not f'{template.department}' in test:
-						test[f'{template.department}'] = [{'test':item.test , 'lab_test_name' : item.lab_test_name , 'result_value' : item.result_value , 'normal_range' :item.normal_range}]
+						test[f'{template.department}'] = [{'test':item.test , 'lab_event' : '', 'lab_test_name' : item.lab_test_name , 'result_value' : item.result_value , 'normal_range' :item.normal_range}]
 
 						if template.lab_test_template_type == "Compound":
 							events = frappe.db.get_list('Normal Test Result',
@@ -43,11 +43,38 @@ class LabResult(Document):
 							# frappe.errprint(events)	
 							# lab_test_events= frappe.db.get_all("Normal Test Result", filters, or_filters, fields, order_by, group_by, start, page_length)
 							for event in events:
-								test[f'{template.department}'].append({ 'lab_test_name' : event.lab_test_name ,  'normal_range' :event.normal_range , 'result_value' : event.result_value})
+								test[f'{template.department}'].append({ "lab_event":'', 'lab_test_name' : event.lab_test_name ,  'normal_range' :event.normal_range , 'result_value' : event.result_value})
+						if template.lab_test_template_type == "Grouped":
+							events = frappe.db.get_list('Normal Test Result',
+								filters={
+									'template': template.name,
+									'parent' : self.name
+								},
+								fields=['lab_test_name', 'result_value' , 'normal_range'],
+							
+							)
+							
+							# frappe.errprint(events)	
+							# lab_test_events= frappe.db.get_all("Normal Test Result", filters, or_filters, fields, order_by, group_by, start, page_length)
+							for event in events:
+								test[f'{template.department}'].append({'test':'' ,"lab_event":'', 'lab_test_name' : event.lab_test_name , 'result_value' : event.result_value , 'normal_range' :event.normal_range})
+				
+								lab_events = frappe.db.get_list('Normal Test Result',
+									filters={
+										'template': event.lab_test_name,
+										'parent' : self.name
+									},
+									
+									fields=['lab_test_event', 'result_value' , 'normal_range'],
+								
+								)
+								for eve in lab_events:
+
+									test[f'{template.department}'].append({ 'lab_test_name' : '', 'lab_event' : eve.lab_test_event  ,  'normal_range' :eve.normal_range , 'result_value' : eve.result_value})
 
 					
 					else:
-						test[f'{template.department}'].append({'test':item.lab_test_name , 'lab_test_name' : '' , 'result_value' : item.result_value , 'normal_range' :item.normal_range})
+						test[f'{template.department}'].append({'test':item.lab_test_name ,"lab_event":'', 'lab_test_name' : '' , 'result_value' : item.result_value , 'normal_range' :item.normal_range})
 				
 		# frappe.errprint(test)					
 		return test

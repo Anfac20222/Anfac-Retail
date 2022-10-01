@@ -101,7 +101,10 @@ doc_events = {
 		
 	},
 	"Patient Encounter" :{
-		"before_save":"his.api.create_order.create_order"
+		"after_insert":"his.api.create_order.create_order",
+		"on_update":"his.api.create_order.update_order",
+		
+
 	}
 }
 
