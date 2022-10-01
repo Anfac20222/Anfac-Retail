@@ -1,41 +1,30 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2022-09-27 16:07:04.918533",
+ "autoname": "field:district_name",
+ "creation": "2022-09-19 11:19:20.162131",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "user",
-  "document",
-  "value"
+  "district_name"
  ],
  "fields": [
   {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "label": "User",
-   "options": "User"
-  },
-  {
-   "fieldname": "document",
-   "fieldtype": "Link",
-   "label": "Document",
-   "options": "DocType"
-  },
-  {
-   "fieldname": "value",
-   "fieldtype": "Dynamic Link",
-   "label": "Value",
-   "options": "document"
+   "fieldname": "district_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "District Name",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-28 12:10:02.513759",
+ "modified": "2022-09-19 11:36:55.559514",
  "modified_by": "Administrator",
  "module": "His",
- "name": "Defaults",
+ "name": "Districts",
  "owner": "Administrator",
  "permissions": [
   {
@@ -46,43 +35,33 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
+   "role": "Physician",
+   "select": 1,
    "share": 1,
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Visit Charge",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Reception",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Pharmacy",
+   "select": 1,
    "share": 1,
    "write": 1
   }
