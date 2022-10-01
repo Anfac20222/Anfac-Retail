@@ -1,11 +1,55 @@
 frappe.ui.form.on('Order', {
 	refresh(frm) {
 		frm.add_custom_button('Cash', () => {
-			alert("Cash")
+			// alert("Cash")
 			// frappe.set_route('Form', frm.doc.reference_type, frm.doc.reference_name);
+			
+
+
+			
 		})
 		frm.add_custom_button('Credit', () => {
-			alert("Credit")
+			let d = new frappe.ui.Dialog({
+				title: 'Order Details',
+				fields: [
+					{
+						label: 'Patient ID',
+						fieldname: 'patient',
+						fieldtype: 'Link',
+						options : "Patient"
+					},
+					{
+						label: 'Patient Name',
+						fieldname: 'patient',
+						fieldtype: 'Data'
+					},
+					{
+						label: 'Total',
+						fieldname: 'total',
+						fieldtype: 'Currency'
+					}
+				],
+				primary_action_label: 'Submit',
+				primary_action(values) {
+					frappe.call({
+						method: "his.api.create_inv.create_inv", //dotted path to server method
+						
+						args: {"doc_name": frm.doc.name  , is_credit : 1},
+						callback: function(r) {
+							// code snippet
+							d.hide();
+						}
+					});
+					
+				}
+			});
+			d.set_values({
+				"patient" : frm.doc.patient,
+				"patient_name" : frm.doc.patient_name,
+				"total" :  frm.doc.grand_total
+			})
+			d.show();
+			// alert("Credit")
 			// frappe.set_route('Form', frm.doc.reference_type, frm.doc.reference_name);
 		}),
 		// your code here
