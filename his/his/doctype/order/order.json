@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "Ord.#####",
+ "autoname": "Ord:.#####",
  "creation": "2022-09-27 13:19:51.595760",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -15,15 +15,14 @@
   "department",
   "date",
   "sec1_section",
+  "order_type",
   "order_items",
-  "grand_total",
-  "order_type"
+  "grand_total"
  ],
  "fields": [
   {
    "fieldname": "patient",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Patient",
    "options": "Patient"
@@ -32,6 +31,8 @@
    "fetch_from": "patient.patient_name",
    "fieldname": "patient_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Patient Name"
   },
   {
@@ -54,6 +55,7 @@
    "options": "Healthcare Practitioner"
   },
   {
+   "fetch_from": "doctor.department",
    "fieldname": "department",
    "fieldtype": "Link",
    "label": "Department",
@@ -91,12 +93,13 @@
    "fieldname": "order_type",
    "fieldtype": "Link",
    "label": "Order Type",
-   "options": "Order Type"
+   "options": "Order Type",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-30 18:16:24.535819",
+ "modified": "2022-10-08 08:58:06.087597",
  "modified_by": "Administrator",
  "module": "His",
  "name": "Order",
@@ -111,6 +114,30 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Pharmacy",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Reception",
    "share": 1,
    "write": 1
   }

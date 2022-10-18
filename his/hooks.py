@@ -47,6 +47,10 @@ app_include_js = "public/js/hidden.js"
 #	"Role": "home_page"
 # }
 
+# Custom Jinja Filters
+# ----------
+
+
 # Generators
 # ----------
 
@@ -101,7 +105,7 @@ doc_events = {
 		
 	},
 	"Patient Encounter" :{
-		"after_insert":"his.api.create_order.create_order",
+		# "after_insert":"his.api.create_order.create_order",
 		"on_update":"his.api.create_order.update_order",
 		
 
@@ -183,4 +187,7 @@ user_data_fields = [
 # auth_hooks = [
 #	"his.auth.validate"
 # ]
+
+
+
 

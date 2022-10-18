@@ -10,6 +10,8 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "template",
+  "type",
   "patient",
   "patient_name",
   "patient_age",
@@ -54,7 +56,9 @@
   "descriptive_toggle",
   "sensitivity_toggle",
   "prescription",
-  "amended_from"
+  "amended_from",
+  "lab_ref",
+  "lab_test_name"
  ],
  "fields": [
   {
@@ -81,6 +85,8 @@
    "fetch_from": "patient.patient_name",
    "fieldname": "patient_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Patient Name",
    "print_hide": 1,
    "read_only": 1,
@@ -425,11 +431,37 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Date"
+  },
+  {
+   "fieldname": "lab_ref",
+   "fieldtype": "Data",
+   "label": "Lab Ref"
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Template",
+   "options": "Lab Test Template"
+  },
+  {
+   "fieldname": "lab_test_name",
+   "fieldtype": "Link",
+   "label": "lab_test_name",
+   "options": "Lab Test Template"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sample",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-01 11:48:12.694981",
+ "modified": "2022-10-08 10:53:44.593348",
  "modified_by": "Administrator",
  "module": "His",
  "name": "Lab Result",
@@ -466,6 +498,21 @@
    "report": 1,
    "role": "Physician",
    "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
