@@ -49,6 +49,11 @@ app_include_js = "public/js/hidden.js"
 
 # Custom Jinja Filters
 # ----------
+jenv = {
+	"methods": [
+		"format_value:his.api.api.frappe_format_value"
+	]
+}
 
 
 # Generators
@@ -190,4 +195,7 @@ user_data_fields = [
 
 
 
+fixtures = [
+    {"dt":"Custom Field", "filters": [["dt", "in", ("Customer", "Contact")], ["fieldname", "in", ("disable_customer_statements", "is_customer_statement_contact")]]}
+]
 

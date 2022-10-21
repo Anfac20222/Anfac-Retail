@@ -6,7 +6,16 @@ def create_inv(doc_name , is_credit = 0 , lab_ref = ''):
     customer = frappe.db.get_value("Patient" , order_doc.patient , "customer")
     # frappe.msgprint(order_doc.name)
     items = []
+    empty_items = ""
     for item in order_doc.order_items:
+        item_qty = frappe.db.get_value("Batch" , {"item" :item.item  }, "batch_qty" )
+        if float(item_qty) <= 0 :
+            empty_items += item.item + ' , '
+        #     frappe.throw(
+        #     title='Ogerysiis',
+            
+        #     exc=FileNotFoundError
+        # )
         items.append({
             "item_code" : item.item,
             "rate" : item.rate,
@@ -39,6 +48,14 @@ def create_inv(doc_name , is_credit = 0 , lab_ref = ''):
         "items" : items,
         "lab_ref" : lab_ref
     })
+    if empty_items:
+        frappe.throw(
+            title='Ogerysiis',
+             msg= f'<b>{empty_items}</b>' + 'Tirada dalabka kuma filna Faldan iska sax',
+            
+           
+        )
+        return
     sales_doc.insert()
     sales_doc.submit()
     frappe.msgprint('Billed successfully')
