@@ -111,7 +111,7 @@ def enqueue():
 
 
 @frappe.whitelist()
-def get_report_content(account , company, customer_name, from_date=None, to_date=None):
+def get_report_content( company, customer_name, account = None, from_date=None, to_date=None):
     """Returns html for the report in PDF format"""
 
     settings_doc = frappe.get_single("Customer Statements Sender")
@@ -205,7 +205,7 @@ def get_report_content(account , company, customer_name, from_date=None, to_date
     return report_html_data
 
 @frappe.whitelist()
-def get_report_content_2(account , company, supplier_name, from_date=None, to_date=None):
+def get_report_content_2( company, supplier_name, account  = None,from_date=None, to_date=None):
     """Returns html for the report in PDF format"""
 
     settings_doc = frappe.get_single("Supplier Statements")
@@ -299,7 +299,7 @@ def get_report_content_2(account , company, supplier_name, from_date=None, to_da
     return report_html_data
 
 @frappe.whitelist()
-def get_report_content_3(account , company, employee_name, from_date=None, to_date=None):
+def get_report_content_3(company, employee_name,account  = None, from_date=None, to_date=None):
     """Returns html for the report in PDF format"""
 
     settings_doc = frappe.get_single("Employee Statements")

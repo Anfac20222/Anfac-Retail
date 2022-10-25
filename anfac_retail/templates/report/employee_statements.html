@@ -204,9 +204,9 @@
 
 			<h5 class="text-center">
 				Statement for period:
-				{{ format_value(filters['from_date'], 'Date') }}
+				{{ filters['from_date'] }}
 				{{ _("to") }}
-				{{ format_value(filters['to_date'], 'Date') }}
+				{{ filters['to_date'] }}
 			</h5>
 			<hr>
 
@@ -226,7 +226,7 @@
 						<tr>
 						{% if(row.posting_date) %}
 							<td>
-							{{ format_value(row.posting_date, 'Date') }}</td>
+							{{ row.posting_date }}</td>
 							<td>
 								{% if (row.voucher_type == "Sales Invoice") and (row.credit > 0) %}
 									{{ _("Cash Sales") }}

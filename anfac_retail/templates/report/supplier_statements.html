@@ -9,6 +9,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ title }}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
 	<meta name="generator" content="frappe">
 	<link type="text/css" rel="stylesheet" href="/assets/css/printview.css">
 	<style>
@@ -204,9 +206,9 @@
 
 			<h5 class="text-center">
 				Statement for period:
-				{{ format_value(filters['from_date'], 'Date') }}
+				{{ frappe.format(filters['from_date'], 'Date') }}
 				{{ _("to") }}
-				{{ format_value(filters['to_date'], 'Date') }}
+				{{ frappe.format(filters['to_date'], 'Date') }}
 			</h5>
 			<hr>
 
@@ -226,7 +228,7 @@
 						<tr>
 						{% if(row.posting_date) %}
 							<td>
-							{{ format_value(row.posting_date, 'Date') }}</td>
+							{{ frappe.format(row.posting_date, 'Date') }}</td>
 							<td>
 								{% if (row.voucher_type == "Sales Invoice") and (row.credit > 0) %}
 									{{ _("Cash Sales") }}
