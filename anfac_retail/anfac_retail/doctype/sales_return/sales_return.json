@@ -13,12 +13,13 @@
   "warehouse",
   "items_section",
   "items",
-  "amended_from",
   "section_break_9",
   "grand_total",
   "column_break_10",
   "discount",
-  "sales_invoice"
+  "sales_invoice",
+  "invoice",
+  "refund"
  ],
  "fields": [
   {
@@ -66,15 +67,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Cash Sales",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
    "fieldname": "section_break_9",
    "fieldtype": "Section Break"
   },
@@ -104,19 +96,22 @@
    "read_only": 1
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Cash Sales",
-   "print_hide": 1,
-   "read_only": 1
+   "default": "0",
+   "fieldname": "invoice",
+   "fieldtype": "Check",
+   "label": "Invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "refund",
+   "fieldtype": "Check",
+   "label": "Refund"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-25 11:10:33.883561",
+ "modified": "2022-10-27 10:04:13.839290",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Sales Return",
