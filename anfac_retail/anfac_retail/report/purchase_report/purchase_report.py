@@ -16,36 +16,43 @@ def get_data(filters):
 	if center:
 		sel_cent += f"and cost_center = '{center}'"
 	if sts == "Unpaid":
-		cond += f'and is_pos = 0'
+		cond += f'and is_paid = 0'
 	elif sts == "Paid":
-		cond += f'and is_pos = 1 ' 
+		cond += f'and is_paid = 1 ' 
 	# frappe.msgprint(cond)
 	amount = "net_total"
 	if sts == "Paid":
 		amount = 'paid_amount'
+	report_type = 'query-report'
+	report = 'Accounts Receivable'
 	data = frappe.db.sql(f"""
 	select 
 	name, 
 	posting_date,
-	customer ,
+	supplier ,
 	
 
-	{amount}  ,
-	status
+	sum(net_total) ,
+	CONCAT('<button type=''button'' class = "btn btn-primary" data=''', supplier ,''' onClick=''consoleerp_hi(this.getAttribute("data") , "{_from}" , "{to}")''>Details</button>') as "Button:Data:100" 
 
-from `tabSales Invoice` 
-where  posting_date between "{_from}" and "{to}" and docstatus = 1 {cond} 
+	
+
+from `tabPurchase Invoice` 
+where  posting_date between "{_from}" and "{to}" and docstatus = 1 group by supplier
  ;""")
 	return data
+
+# '<button class="btn btn-primary " id = "purchase_detal_btn" onClick = " frappe.set_route('query-report', 'Accounts Receivable'" > Detail </button>'
+	
 def get_columns():
 	return [
 		
-		"Voucher:Link/Sales Invoice:220",
+		"Voucher:Link/Purchase Invoice:220",
 		"Date: Date:120",
-		"Customer Name:Link/Customer:200",
+		"Supplier Name:Link/Customer:200",
 		
 		"Amount:Currency:110",
-		"Status:Data:110"
+		"Detail:Data:110"
 	
 		
 	]

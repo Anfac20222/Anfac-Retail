@@ -45,7 +45,9 @@ frappe.ui.form.on('Order Items', {
 				 row.available_qty = 0
 				frm.refresh_field("items")
 		   }
+		 
 	   })
+	//    calculate_total(frm)
 		
 	},
 	refresh(frm) {

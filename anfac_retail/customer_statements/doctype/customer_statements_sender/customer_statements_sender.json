@@ -88,8 +88,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Company",
-   "options": "Company",
-   "reqd": 1
+   "options": "Company"
   },
   {
    "fieldname": "section_preferences",
@@ -130,6 +129,7 @@
    "options": "Customer"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "preview",
    "fieldtype": "Button",
    "label": "Preview or Print"
@@ -190,8 +190,7 @@
    "fieldname": "recieable_account",
    "fieldtype": "Link",
    "label": "Recieable Account",
-   "options": "Account",
-   "reqd": 1
+   "options": "Account"
   },
   {
    "fieldname": "column_break_1",
@@ -200,7 +199,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2022-08-21 13:43:24.078829",
+ "modified": "2022-10-26 15:15:27.177147",
  "modified_by": "Administrator",
  "module": "Customer Statements",
  "name": "Customer Statements Sender",
@@ -239,5 +238,6 @@
  ],
  "quick_entry": 1,
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

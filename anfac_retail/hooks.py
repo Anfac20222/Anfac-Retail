@@ -14,7 +14,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/anfac_retail/css/anfac_retail.css"
-# app_include_js = "/assets/anfac_retail/js/anfac_retail.js"
+app_include_js = "/assets/anfac_retail/js/anfac_retail.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/anfac_retail/css/anfac_retail.css"
@@ -31,7 +31,11 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Sales Invoice": "public/js/sales_invoice.js"}
+doctype_js = {
+	"Sales Invoice": "public/js/sales_invoice.js",
+
+	
+	}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}

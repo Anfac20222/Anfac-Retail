@@ -2,7 +2,8 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Sales Report"] = {
+
+frappe.query_reports["Purchase Report"] = {
 	"filters": [
 		{
 			fieldname: "from_date",
@@ -18,14 +19,14 @@ frappe.query_reports["Sales Report"] = {
 			default:frappe.datetime.now_date(),
 			reqd: 1
 		},
-		{
-			fieldname: "status",
-			label: __("Status"),
-			fieldtype: "Select",
-			options: ["","Paid","Unpaid"],
+		// {
+		// 	fieldname: "status",
+		// 	label: __("Status"),
+		// 	fieldtype: "Select",
+		// 	options: ["","Paid","Unpaid"],
 			
 			
-		},
+		// },
 
 	
 
