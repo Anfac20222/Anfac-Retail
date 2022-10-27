@@ -27,10 +27,9 @@ def get_data(filters):
 	report = 'Accounts Receivable'
 	data = frappe.db.sql(f"""
 	select 
-	name, 
-	posting_date,
-	supplier ,
 	
+	supplier ,
+	'',
 
 	sum(net_total) ,
 	CONCAT('<button type=''button'' class = "btn btn-primary" data=''', supplier ,''' onClick=''consoleerp_hi(this.getAttribute("data") , "{_from}" , "{to}")''>Details</button>') as "Button:Data:100" 
@@ -47,10 +46,10 @@ where  posting_date between "{_from}" and "{to}" and docstatus = 1 group by supp
 def get_columns():
 	return [
 		
-		"Voucher:Link/Purchase Invoice:220",
-		"Date: Date:120",
-		"Supplier Name:Link/Customer:200",
 		
+		
+		"Supplier Name:Link/Customer:200",
+		"Number: Data:120",
 		"Amount:Currency:110",
 		"Detail:Data:110"
 	
