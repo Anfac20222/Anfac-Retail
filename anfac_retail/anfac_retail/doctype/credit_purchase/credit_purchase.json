@@ -10,6 +10,10 @@
   "column_break_2",
   "date",
   "account",
+  "supplier_invoice_details_section",
+  "supplier_invoice",
+  "column_break_14",
+  "supplier_invoice_date",
   "warehouse",
   "items_section",
   "items",
@@ -103,12 +107,31 @@
    "options": "Credit Purchase",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "supplier_invoice_details_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier Invoice Details"
+  },
+  {
+   "fieldname": "supplier_invoice",
+   "fieldtype": "Data",
+   "label": "Supplier Invoice "
+  },
+  {
+   "fieldname": "supplier_invoice_date",
+   "fieldtype": "Date",
+   "label": "Supplier Invoice Date"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-25 11:11:41.660051",
+ "modified": "2022-10-31 16:01:35.283119",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Credit Purchase",

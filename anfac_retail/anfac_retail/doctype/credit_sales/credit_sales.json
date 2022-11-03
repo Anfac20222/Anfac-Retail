@@ -70,6 +70,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "grand_total",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -107,7 +108,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-25 11:10:51.590097",
+ "modified": "2022-11-02 16:23:06.564659",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Credit Sales",

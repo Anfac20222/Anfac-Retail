@@ -3,6 +3,10 @@
 
 frappe.ui.form.on('Credit Purchase', {
 	refresh: function(frm) {
+		if(frm.is_new()){
+			// alert('ok')
+			frm.set_value("purchase_invoice" , '')
+		}
 		frm.set_query("account", function() {
 			return {
 				"filters": {

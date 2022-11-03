@@ -56,7 +56,7 @@ def create_inv(doc_name ,dt , is_sales_return = False , is_credit = False):
         "is_pos" : is_pos,
         "discount_amount" : cash_sales.discount,
         "payments": payments,
-       
+        "voucher_no" : doc_name,
         "items" : items,
        
     })
@@ -130,6 +130,7 @@ def purchase(doc_name ,dt , is_purchase_return = False , is_credit = False):
         "discount_amount" : cash_sales.discount,
         "cash_bank_account" : account,
         "paid_amount" : paid_amount,
+        "bill_no" : cash_sales.supplier_invoice,
         # "payments": payments,
        
         "items" : items,

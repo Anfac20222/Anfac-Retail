@@ -6,6 +6,7 @@ from anfac_retail.api.create_inv import create_inv
 from frappe.model.document import Document
 
 class CashSales(Document):
+	
 	def on_submit(self):
 		# frappe.msgprint("ok")
 		sales_doc = create_inv(self.name , dt = 'Cash Sales')

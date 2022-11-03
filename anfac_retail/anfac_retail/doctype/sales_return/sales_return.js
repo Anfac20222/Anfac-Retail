@@ -5,6 +5,10 @@ frappe.ui.form.on('Sales Return', {
 	
 	refresh: function(frm) {
 		if(frm.is_new()){
+			// alert('ok')
+			frm.set_value("sales_invoice" , '')
+		}
+		if(frm.is_new()){
 			frm.disable_save();
 		
 		

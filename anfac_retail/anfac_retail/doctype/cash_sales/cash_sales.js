@@ -2,9 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Cash Sales', {
-	// refresh: function(frm) {
+	refresh: function(frm) {
+		if(frm.is_new()){
+			// alert('ok')
+			frm.set_value("sales_invoice" , '')
+		}
 
-	// }
+	},
 	before_save:function(frm){
 		// alert('ok')
 		calculate_total(frm)

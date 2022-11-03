@@ -10,6 +10,10 @@
   "column_break_2",
   "date",
   "account",
+  "supplier_invoice_detail_section",
+  "supplier_invoice",
+  "column_break_14",
+  "supplier_invoice_date",
   "warehouse",
   "items_section",
   "items",
@@ -102,12 +106,31 @@
    "options": "Cash Purchase",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "supplier_invoice_detail_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier Invoice Detail"
+  },
+  {
+   "fieldname": "supplier_invoice",
+   "fieldtype": "Data",
+   "label": "Supplier Invoice "
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_invoice_date",
+   "fieldtype": "Date",
+   "label": "Supplier Invoice Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-25 11:11:21.223869",
+ "modified": "2022-10-31 16:03:36.153213",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Cash Purchase",
