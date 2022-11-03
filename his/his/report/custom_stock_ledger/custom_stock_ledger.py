@@ -48,6 +48,11 @@ def execute(filters=None):
 			sle.update({"qty_after_transaction": actual_qty, "stock_value": stock_value})
 
 		sle.update({"in_qty": max(sle.actual_qty, 0), "out_qty": min(sle.actual_qty, 0)})
+		if sle.voucher_type == "Purchase Invoice":
+			sle.update({"party": frappe.get_value("Purchase Invoice", sle.voucher_no ,"supplier")})
+
+		if sle.voucher_type == "Sales Invoice":
+			sle.update({"party": frappe.get_value("Sales Invoice", sle.voucher_no ,"customer")})
 
 		if sle.serial_no:
 			update_available_serial_nos(available_serial_nos, sle)
@@ -121,6 +126,12 @@ def get_columns():
 			"fieldname": "voucher_no",
 			"fieldtype": "Dynamic Link",
 			"options": "voucher_type",
+			"width": 250,
+		},
+		{
+			"label": _("Party"),
+			"fieldname": "party",
+			"fieldtype": "Data",
 			"width": 250,
 		},
 		
