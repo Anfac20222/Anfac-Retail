@@ -116,7 +116,8 @@
   {
    "fieldname": "supplier_invoice",
    "fieldtype": "Data",
-   "label": "Supplier Invoice "
+   "label": "Supplier Invoice ",
+   "reqd": 1
   },
   {
    "fieldname": "supplier_invoice_date",
@@ -131,7 +132,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-31 16:01:35.283119",
+ "modified": "2022-11-05 11:10:26.525199",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Credit Purchase",

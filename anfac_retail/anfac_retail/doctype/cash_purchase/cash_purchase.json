@@ -47,7 +47,8 @@
    "fieldname": "account",
    "fieldtype": "Link",
    "label": "Account",
-   "options": "Account"
+   "options": "Account",
+   "reqd": 1
   },
   {
    "default": "Stores - D",
@@ -74,6 +75,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "grand_total",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -115,7 +117,8 @@
   {
    "fieldname": "supplier_invoice",
    "fieldtype": "Data",
-   "label": "Supplier Invoice "
+   "label": "Supplier Invoice ",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_14",
@@ -130,7 +133,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-31 16:03:36.153213",
+ "modified": "2022-11-05 11:12:49.893390",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Cash Purchase",

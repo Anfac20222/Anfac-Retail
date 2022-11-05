@@ -132,6 +132,7 @@ def purchase(doc_name ,dt , is_purchase_return = False , is_credit = False):
         "paid_amount" : paid_amount,
         "bill_no" : cash_sales.supplier_invoice,
         # "payments": payments,
+        "voucher_no" : doc_name,
        
         "items" : items,
        

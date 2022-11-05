@@ -167,6 +167,7 @@ def get_journal(filters):
 	select 
 	"Reciept" as type,
 	p.posting_date as date,
+	voucher_no as voucher,
 	c.account  as customer,
 
 
@@ -213,6 +214,7 @@ def get_journal_payment(filters):
 	select 
 	"Payment" as type,
 	p.posting_date as date,
+	voucher_no as voucher,
 	c.account  as customer,
 
 
@@ -236,6 +238,7 @@ def get_purchase(filters):
 		"Purchase" as type,
 		name as name, 
 		posting_date as date,
+		voucher_no as voucher,
 		supplier as customer,
 		paid_amount as credit,
 		0 as debit
