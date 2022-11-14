@@ -53,6 +53,8 @@ def execute(filters=None):
 
 		if sle.voucher_type == "Sales Invoice":
 			sle.update({"party": frappe.get_value("Sales Invoice", sle.voucher_no ,"customer")})
+			sle.update({"rate": frappe.db.get_value("Sales Invoice Item" , {"item_code" : sle.item_code, "parent" : sle.voucher_no } , "rate")})
+
 
 		if sle.serial_no:
 			update_available_serial_nos(available_serial_nos, sle)
@@ -151,6 +153,12 @@ def get_columns():
 			"width": 110,
 			"options": "Company:company:default_currency",
 			"convertible": "rate",
+		},
+		{
+			"label": _("Rate"),
+			"fieldname": "rate",
+			"fieldtype": "Currency",
+			"width": 100,
 		},
 	
 		{
