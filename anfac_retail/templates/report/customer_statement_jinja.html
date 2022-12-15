@@ -244,8 +244,14 @@
 								{% endif %}
 							</td>
 							<td>
-								{{ row.voucher_no }}
+								
+								{%if (row.voucher_type == "Payment Entry") %}
+
+								<a href="/app/payment-entry/{{ row.voucher_no }}">{{ row.voucher_no }}</a> 
+								{% endif %}
+								
 								{% if row.voucher_type == "Sales Invoice" %}
+								<a href="/app/sales-invoice/{{ row.voucher_no }}">{{ row.voucher_no }}</a> 
 								{% set sales_doc = frappe.get_doc("Sales Invoice" , row.voucher_no) %}
 								{{ _("Items") }}:<br>
 								{% for item in sales_doc.items %}

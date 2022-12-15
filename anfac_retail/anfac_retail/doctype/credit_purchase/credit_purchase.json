@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "supplier",
+  "supplier_balance",
   "column_break_2",
   "date",
   "account",
@@ -127,12 +128,19 @@
   {
    "fieldname": "column_break_14",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_balance",
+   "fieldtype": "Currency",
+   "label": "Supplier Balance",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-05 11:10:26.525199",
+ "modified": "2022-11-10 15:55:26.567829",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Credit Purchase",

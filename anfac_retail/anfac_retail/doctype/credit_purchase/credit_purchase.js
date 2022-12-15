@@ -76,6 +76,17 @@ frappe.ui.form.on('Order Items', {
 	rate: function(frm , cdt , cdn){
 		// alert("ok")
 		var row = locals[cdt][cdn]
+		frappe.db.get_value("Item Price" , {"item_code" : row.item , "buying" : 1 } , 'price_list_rate')
+	   .then(r => {
+		if( row.rate > r.message.price_list_rate ){
+			frappe.msgprint({
+				title: __('Notification'),
+				indicator: 'green',
+				message: __(`Qimaha aad ku iibsanayso  <b>${row.item}</b>  waxa uu kabadanyahay Qimihi hore <b>${r.message.price_list_rate }</b> `)
+			});			
+		}
+	   })
+		// Dhamad
 		row.amount = row.qty * row.rate
 		calculate_total(frm)
 		frm.refresh_field('items')

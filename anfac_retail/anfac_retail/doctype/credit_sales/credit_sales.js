@@ -33,7 +33,15 @@ frappe.ui.form.on('Order Items', {
 	   })
 	   frappe.db.get_value("Bin" , {'warehouse' : frm.doc.warehouse , 'item_code' : row.item} , 'actual_qty')
 	   .then(r => {
-	    
+		if(r.message.actual_qty <= 0){
+			frappe.msgprint({
+				title: __('Notification'),
+				indicator: 'green',
+				message: __(`Tirada Kaaga Tataalo <b>${row.item}</b>  Waa <b>${r.message.actual_qty }</b> `)
+			});
+			// alert()
+			
+		}
 	       if(r.message.actual_qty){
 	           row.available_qty = r.message.actual_qty
 	            frm.refresh_field("items")
@@ -67,6 +75,16 @@ frappe.ui.form.on('Order Items', {
 	rate: function(frm , cdt , cdn){
 		// alert("ok")
 		var row = locals[cdt][cdn]
+		frappe.db.get_value("Item Price" , {"item_code" : row.item , "buying" : 1 } , 'price_list_rate')
+	   .then(r => {
+		if( row.rate < r.message.price_list_rate ){
+			frappe.msgprint({
+				title: __('Notification'),
+				indicator: 'red',
+				message: __(`Qimaha aad ku ibinayso  <b>${row.item}</b>  waxa uu kayartahay Qimaha aad Ku sogaday  <b>${r.message.price_list_rate }</b> `)
+			});			
+		}
+	   })
 		row.amount = row.qty * row.rate
 		calculate_total(frm)
 		frm.refresh_field('items')
@@ -79,7 +97,7 @@ function calculate_total(frm){
 	let grand_total = 0
 	var rows = frm.doc.items
 	rows.forEach(item => {
-		grand_total +=  parseInt(item.qty) * parseFloat(item.rate) 
+		grand_total +=  parseFloat(item.qty) * parseFloat(item.rate) 
 	});
 	if(frm.doc.discount){
 	grand_total = grand_total - parseFloat(frm.doc.discount) 
@@ -87,3 +105,18 @@ function calculate_total(frm){
 	// alert( grand_total)
 	frm.set_value('grand_total' , grand_total)
 }
+
+frappe.ui.form.on('Order Items', {
+	refresh(frm) {
+		// your code here
+	},
+	amount: function(frm , cdt , cdn){
+	    let row = locals[cdt][cdn]
+	    row.rate = row.amount/row.qty
+	    if(row.qty){
+	    frm.refresh_field('items')
+	    }
+	   // console.log(row)
+	   // alert("ok")
+	}
+})

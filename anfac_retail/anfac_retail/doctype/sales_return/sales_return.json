@@ -9,6 +9,8 @@
   "customer",
   "column_break_2",
   "date",
+  "refund",
+  "invoice",
   "pos_profile",
   "warehouse",
   "items_section",
@@ -18,16 +20,14 @@
   "column_break_10",
   "discount",
   "sales_invoice",
-  "invoice",
-  "refund"
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer",
-   "reqd": 1
+   "options": "Customer"
   },
   {
    "fieldname": "column_break_2",
@@ -41,10 +41,12 @@
    "reqd": 1
   },
   {
+   "depends_on": "refund",
    "fieldname": "pos_profile",
    "fieldtype": "Link",
    "label": "Pos Profile",
-   "options": "POS Profile"
+   "options": "POS Profile",
+   "reqd": 1
   },
   {
    "default": "Stores - D",
@@ -63,6 +65,7 @@
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "items",
+   "mandatory_depends_on": "eval:doc.customer!= null",
    "options": "Order Items",
    "reqd": 1
   },
@@ -102,16 +105,25 @@
    "label": "Invoice"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "refund",
    "fieldtype": "Check",
    "label": "Refund"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sales Return",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-27 10:04:13.839290",
+ "modified": "2022-11-19 13:20:07.927346",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Sales Return",

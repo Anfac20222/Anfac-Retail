@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "customer",
+  "customer_balance",
   "column_break_2",
   "date",
   "pos_profile",
@@ -103,12 +104,19 @@
    "options": "Credit Sales",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "customer_balance",
+   "fieldtype": "Data",
+   "label": "Customer Balance",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-02 16:23:06.564659",
+ "modified": "2022-11-17 15:27:30.496601",
  "modified_by": "Administrator",
  "module": "Anfac Retail",
  "name": "Credit Sales",
