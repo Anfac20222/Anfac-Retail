@@ -18,14 +18,7 @@ frappe.query_reports["Recipt Report"] = {
 			default:frappe.datetime.now_date(),
 			reqd: 1
 		},
-		{
-		fieldname: "center",
-		label: __("Center"),
-		fieldtype: "Link",
-		options: "Cost Center",
-		default: "Tahliil 2 - TTC"
-		
-	},
+	
 
 	]
 };

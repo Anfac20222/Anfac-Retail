@@ -194,13 +194,12 @@
    "fieldname": "payable_account",
    "fieldtype": "Link",
    "label": "Payable s Account",
-   "options": "Account",
-   "reqd": 1
+   "options": "Account"
   }
  ],
  "issingle": 1,
  "links": [],
- "modified": "2022-08-22 13:28:30.231051",
+ "modified": "2022-10-09 15:32:07.542732",
  "modified_by": "Administrator",
  "module": "Customer Statements",
  "name": "Supplier Statements",

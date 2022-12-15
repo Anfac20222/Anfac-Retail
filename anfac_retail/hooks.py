@@ -109,6 +109,11 @@ doc_events = {
 		"on_submit" : "anfac_retail.api.land_cost_voucher.create_journal",
 		"on_cancel" : "anfac_retail.api.land_cost_voucher.cancel_journal"
 	}
+	# ,
+	# "Stock Entry" : {
+	# 	"on_submit" : "anfac_retail.api.land_cost_voucher.create_journal_se",
+	# 	"on_cancel" : "anfac_retail.api.land_cost_voucher.cancel_journal_se"
+	# }
 }
 # doc_events = {
 # 	"*": {

@@ -234,6 +234,7 @@
 								
 									{{ _("Invoice") }}
 									{% elif (row.voucher_type == "Payment Entry") %}
+									
 								
 									{{ _("Reciept") }}
 
@@ -242,9 +243,14 @@
 								{% endif %}
 							</td>
 							<td>
-								{{ row.voucher_no }}
+								{% if row.voucher_type == "Payment Entry" %}
+								{{ frappe.db.get_value('Payment Entry',  row.voucher_no  , 'reciept_no') }}
+								{% endif %}
+								
 								{% if row.voucher_type == "Sales Invoice" %}
-								{% set sales_doc = frappe.get_doc("Sales Invoice" , row.voucher_no) %}
+								{{ frappe.db.get_value('Sales Invoice',  row.voucher_no  , 'invocie_no') }}
+								
+								{% set sales_doc = frappe.get_doc("Sales Invoice" , row.voucher_no) %}<br>
 								{{ _("Items") }}:<br>
 								{% for item in sales_doc.items %}
 								<span style="font-size:9px;">

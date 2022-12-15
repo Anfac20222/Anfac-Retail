@@ -12,15 +12,14 @@ def get_data(filters):
 	sel_cent = ""
 	
 
-	_from ,to, sts, center = filters.get('from_date'), filters.get('to')  ,filters.get('status') , filters.get('center') 
-	if center:
-		sel_cent += f"and cost_center = '{center}'"
+	_from ,to, sts = filters.get('from_date'), filters.get('to')  ,filters.get('status') 
+	
 	if sts == "Unpaid":
-		cond += f'and is_pos = 0'
+		cond += f'and outstanding_amount > 0'
 	elif sts == "Paid":
 		cond += f'and is_pos = 1 ' 
 	# frappe.msgprint(cond)
-	amount = "net_total"
+	amount = "outstanding_amount"
 	if sts == "Paid":
 		amount = 'paid_amount'
 	data = frappe.db.sql(f"""
@@ -28,7 +27,7 @@ def get_data(filters):
 	name, 
 	posting_date,
 	customer ,
-	invoice_no ,
+	invocie_no ,
 	{amount}  
 
 from `tabSales Invoice` 

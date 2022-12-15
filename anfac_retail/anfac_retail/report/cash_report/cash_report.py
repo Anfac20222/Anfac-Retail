@@ -117,7 +117,7 @@ def get_account_balance(_from ,to):
 	# pre =adddate(getdate(_from) , datys = -1 ) 
 	pre = add_to_date(_from, days=-1, as_string=True)
 	report_bl = frappe.get_doc("Report", "Account Balance")
-	report_filters = {"report_date":pre, "account_type" :"Cash"}
+	report_filters = {"report_date":pre, "account_type" :"Bank"}
 
 	columns, data = report_bl.get_data(
            limit=500, user="Administrator", filters=report_filters, as_dict=True

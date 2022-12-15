@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-09-28 07:37:30.660879",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reciept",
+  "customer",
+  "customer_group",
+  "customer_number",
+  "message",
+  "send"
+ ],
+ "fields": [
+  {
+   "fieldname": "reciept",
+   "fieldtype": "Select",
+   "label": "Reciept",
+   "options": "All Customer\nCustomer Group\nOverdue Receivables\nIndividual"
+  },
+  {
+   "depends_on": "eval:doc.reciept == \"Individual\"",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "mandatory_depends_on": "eval:doc.reciept == \"Individual\"",
+   "options": "Customer"
+  },
+  {
+   "depends_on": "eval:doc.reciept == \"Customer Group\"",
+   "fieldname": "customer_group",
+   "fieldtype": "Link",
+   "label": "Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "depends_on": "eval:doc.reciept == \"Individual\"",
+   "fetch_from": "customer.mobile_no",
+   "fieldname": "customer_number",
+   "fieldtype": "Data",
+   "label": "Customer Number",
+   "mandatory_depends_on": "eval:doc.reciept == \"Individual\""
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Long Text",
+   "label": "Message"
+  },
+  {
+   "fieldname": "send",
+   "fieldtype": "Button",
+   "label": "Send"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-09-28 09:04:19.892133",
+ "modified_by": "Administrator",
+ "module": "Anfac Retail",
+ "name": "SMS",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

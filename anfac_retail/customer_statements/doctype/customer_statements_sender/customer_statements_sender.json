@@ -190,8 +190,7 @@
    "fieldname": "recieable_account",
    "fieldtype": "Link",
    "label": "Recieable Account",
-   "options": "Account",
-   "reqd": 1
+   "options": "Account"
   },
   {
    "fieldname": "column_break_1",
@@ -200,7 +199,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2022-08-21 13:43:24.078829",
+ "modified": "2022-10-09 15:31:01.759738",
  "modified_by": "Administrator",
  "module": "Customer Statements",
  "name": "Customer Statements Sender",

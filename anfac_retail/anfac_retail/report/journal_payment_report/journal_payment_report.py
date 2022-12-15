@@ -25,7 +25,7 @@ def execute(filters=None):
 	 `tabJournal Entry Account`c 
 	 left join `tabJournal Entry` p 
 	 on p.name = c.parent
-	 where p.posting_date between "{_from}" and "{to}" and docstatus !=2 ;
+	 where p.posting_date between "{_from}" and "{to}" and p.docstatus !=2 ;
 	""")
 	return columns, data
 def get_columns():

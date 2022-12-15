@@ -134,8 +134,7 @@ def get_report_content(account , company, customer_name, from_date=None, to_date
         "to_date": to_date,
         "group_by": "Group by Voucher (Consolidated)",
     }
-    if  account:
-       report_gl_filters['account'] = [account]
+
     columns_gl, data_gl = report_gl.get_data(
         limit=500, user="Administrator", filters=report_gl_filters, as_dict=True
     )
@@ -228,8 +227,7 @@ def get_report_content_2(account , company, supplier_name, from_date=None, to_da
         "to_date": to_date,
         "group_by": "Group by Voucher (Consolidated)",
     }
-    if  account:
-       report_gl_filters['account'] = [account]
+
     columns_gl, data_gl = report_gl.get_data(
         limit=500, user="Administrator", filters=report_gl_filters, as_dict=True
     )
@@ -322,8 +320,7 @@ def get_report_content_3(account , company, employee_name, from_date=None, to_da
         "to_date": to_date,
         "group_by": "Group by Voucher (Consolidated)",
     }
-    if  account:
-       report_gl_filters['account'] = [account]
+
     columns_gl, data_gl = report_gl.get_data(
         limit=500, user="Administrator", filters=report_gl_filters, as_dict=True
     )

@@ -9,17 +9,13 @@ def execute(filters=None):
 	return get_columns(), get_data(filters)
 def get_data(filters):
 	
-	_from ,to , center = filters.get('from_date'), filters.get('to')  , filters.get('center')
+	_from ,to  = filters.get('from_date'), filters.get('to')  
 	# if sts == "Unpaid":
 	# 	cond += f'and is_pos = 0'
 	# elif sts == "Paid":
 	# 	cond += f'and is_pos = 1 ' 
 	# frappe.msgprint(cond)
-	sel_cent =""
-	if center == "Tahliil 2 - TTC":
-		sel_cent = "and cost_center = 'Tahliil 2 - TTC' "
-	else:
-		sel_cent = "and cost_center is null "
+
 	# if center:
 	# 	sel_cent += f"and cost_center = '{center}'"
 	
@@ -28,7 +24,7 @@ def get_data(filters):
 	name, 
 	posting_date,
 	party ,
-	receipt_no ,
+	reciept_no ,
 	paid_amount  
 
 from `tabPayment Entry` 

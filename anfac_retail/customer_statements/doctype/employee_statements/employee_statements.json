@@ -50,8 +50,7 @@
    "fieldname": "payable_account",
    "fieldtype": "Link",
    "label": "Payable s Account",
-   "options": "Account",
-   "reqd": 1
+   "options": "Account"
   },
   {
    "fieldname": "section_preferences",
@@ -200,7 +199,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2022-08-22 13:47:02.504605",
+ "modified": "2022-10-09 15:32:54.801064",
  "modified_by": "Administrator",
  "module": "Customer Statements",
  "name": "Employee Statements",
